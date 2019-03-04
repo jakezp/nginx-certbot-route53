@@ -16,13 +16,11 @@ ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 ADD nginx.conf /nginx.conf
 ADD crontab /crontab
 ADD run.sh /run.sh
-RUN rm /etc/init.d/nginx
 
-# Create directories
-RUN mkdir /etc/ssl/certs/nginx
-
-# Set permissions
-RUN chmod +x /run.sh
+# Housekeeping tasks: removing files, creating directories, setting permissions, etc.
+RUN rm /etc/init.d/nginx \
+    && mkdir /etc/ssl/certs/nginx \
+    && chmod +x /run.sh
 
 # Expose volumes & ports
 VOLUME ["/etc/nginx/conf.d/", "/etc/letsencrypt/"]
