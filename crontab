@@ -1,0 +1,2 @@
+* * * * * date >> /var/log/cron.log 2>&1
+0 0 * * 1 certbot renew --webroot -w /data/letsencrypt && supervisorctl restart nginx 2>&1
