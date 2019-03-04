@@ -10,9 +10,12 @@ Run with:
 ```
 docker run -d --name='nginx' --net='bridge' \
       -e 'SERVERNAME'='fqdn' \
+      -e 'SRVPORT'='port' \
       -e 'HOSTIP'='host_ip' \
       -e 'DESTPORT'='dest_port' \
       -e 'EMAIL'='your_email' \
+      -e 'ACCESS_KEY'='your_aws_access_key' \
+      -e 'SECRET_KEY'='your_aws_secret_key' \
       -p '80:80/tcp' -p '443:443/tcp' \
       -v '/tmp/nginx/config':'/etc/nginx/conf.d/' \
       -v '/tmp/nginx/sslcerts':'/etc/letsencrypt/' \
