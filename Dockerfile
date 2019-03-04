@@ -8,7 +8,8 @@ ENV DEBIAN_FRONTEND noninteractive
 # Install and update packages
 RUN apt-get update \
     && apt-get upgrade -yq \
-    && apt-get install supervisor nginx openssl ca-certificates certbot python3-pip cron -yq
+    && apt-get install supervisor nginx openssl ca-certificates certbot python3-pip cron -yq \
+    && rm -rf /var/lib/apt/lists/*
 
 # Add config files
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
