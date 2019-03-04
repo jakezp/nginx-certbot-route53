@@ -15,17 +15,22 @@ docker run -d --name='nginx' --net='bridge' \
       -e 'DESTPORT'='dest_port' \
       -e 'EMAIL'='your_email' \
       -e 'ACCESS_KEY'='your_aws_access_key' \
-      -e 'SECRET_KEY'='your_aws_secret_key' \
-      -p '80:80/tcp' -p '443:443/tcp' \
+      -e 'ACCESS_KEY'='your_aws_secret_key' \
+      -p '443:443/tcp' \
       -v '/tmp/nginx/config':'/etc/nginx/conf.d/' \
       -v '/tmp/nginx/sslcerts':'/etc/letsencrypt/' \
       jakezp/nginx
 ```
 
 Change:<br>
-SERVERNAME - FQDN of host / instance / site<br>
-HOSTIP - Host IP address<br>
-DESTPORT - Port of the destination application / service<br>
-EMAIL - Email address (required for letsencrypt certificates)<br>
-/tmp/nginx/config - preferred nginx config location on the host<br>
-/tmp/nginx/sslcerts - letsencrypt config and cert location
+**SERVERNAME** - FQDN of host / instance / site<br/>
+**SRVPORT** - Port nginx will listen on<br/>
+**HOSTIP** - Host IP address<br/>
+**DESTPORT** - Port of the destination application / service<br/>
+**EMAIL** - Email address (required for letsencrypt certificates)<br/>
+**ACCESS_KEY** - AWS Access key
+**ACCESS_KEY** - AWS Secret key
+**/tmp/nginx/config** - preferred nginx config location on the host<br/>
+**/tmp/nginx/sslcerts** - letsencrypt config and cert location<br/>
+<br/>
+**NB**: Ensure you expose the correct port (same port as specified in SRVPORT
