@@ -9,6 +9,7 @@ if [[ ! -f /etc/nginx/conf.d/reverseproxy.conf ]]; then
   echo -e "=> Setting up nginx"
   mv /nginx.conf /etc/nginx/conf.d/reverseproxy.conf
   sed -i "s/SERVERNAME/$SERVERNAME/g" /etc/nginx/conf.d/reverseproxy.conf
+  sed -i "s/SERVPORT/$SERVPORT/g" /etc/nginx/conf.d/reverseproxy.conf
   sed -i "s/HOSTIP/$HOSTIP/g" /etc/nginx/conf.d/reverseproxy.conf
   sed -i "s/DESTPORT/$DESTPORT/g" /etc/nginx/conf.d/reverseproxy.conf
 fi
