@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Set AWS credentials
+export AWS_ACCESS_KEY_ID=ACCESS_KEY
+export AWS_SECRET_ACCESS_KEY=SECRET_KEY
+
 # Add config file & configure nginx
 if [[ ! -f /etc/nginx/conf.d/reverseproxy.conf ]]; then
   echo -e "=> Setting up nginx"
@@ -14,16 +18,10 @@ if [[ ! -f /etc/ssl/certs/nginx/dh2048.pem ]]; then
   openssl dhparam -out /etc/ssl/certs/nginx/dh2048.pem 2048
 fi
 
-# Create letencrypt directory
-mkdir -p /data/letsencrypt
-
 # Generate letsencrypt certificates
 if [[ ! -f /etc/letsencrypt/live/$SERVERNAME/fullchain.pem ]]; then
   echo -e "=> Generating certificates..."
-  certbot certonly --webroot --email $EMAIL --agree-tos --no-eff-email --webroot-path=/data/letsencrypt -d $SERVERNAME
-  sed -i 's/^## //g' /etc/nginx/conf.d/reverseproxy.conf
-  sed -i 's/^##$//g' /etc/nginx/conf.d/reverseproxy.conf
-  nginx -s stop
+  certbot certonly --dns-route53 --email $EMAIL --agree-tos --no-eff-email -d $SERVERNAME
 fi
 
 # Configure cron
