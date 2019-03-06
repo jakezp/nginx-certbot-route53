@@ -31,7 +31,7 @@ Change:<br>
 **DESTPORT** - Port of the destination application / service<br/>
 **EMAIL** - Email address (required for letsencrypt certificates)<br/>
 **ACCESS_KEY** - AWS Access key<br/>
-**ACCESS_KEY** - AWS Secret key<br/>
+**SECRET_KEY** - AWS Secret key<br/>
 **/tmp/nginx/config** - preferred nginx config location on the host<br/>
 **/tmp/nginx/sslcerts** - letsencrypt config and cert location<br/>
 <br/>
