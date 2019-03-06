@@ -6,6 +6,8 @@ Certificate will be generated on initial start and a cronjob will be configured 
 
 This version will be using the certbot dns-route53 plugin, so an AWS access key and secret key with sufficient rights will be required to update route53 dns records. Please see https://certbot-dns-route53.readthedocs.io/en/stable/ for IAM permissions and a sample IAM policy.
 
+**NB** Ensure your DNS has been configured correctly. Create an A record for SERVERNAME to point to the public IP address of your host, or else the certificate authorization will fail.
+
 Run with:
 ```
 docker run -d --name='nginx' --net='bridge' \
