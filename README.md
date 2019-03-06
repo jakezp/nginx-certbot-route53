@@ -33,4 +33,4 @@ Change:<br>
 **/tmp/nginx/config** - preferred nginx config location on the host<br/>
 **/tmp/nginx/sslcerts** - letsencrypt config and cert location<br/>
 <br/>
-**NB**: Ensure you expose the correct port (same port as specified in SRVPORT
+**NB**: Ensure you expose the correct port (same port as specified in SRVPORT)
